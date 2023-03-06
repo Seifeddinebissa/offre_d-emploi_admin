@@ -1,0 +1,7 @@
+.my_pagination /deep/ .ngx-pagination .current{
+    margin-left: 350px;
+    margin-right: 250px;
+    font-family: "Montserrat";
+	text-align: center;
+	overflow: hidden;
+}

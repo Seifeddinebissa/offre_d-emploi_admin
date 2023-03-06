@@ -1,0 +1,66 @@
+<div id="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <app-header></app-header>
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Profile -->
+                        <div class="col ml-2">
+                            <div class="card shadow mb-4">
+                              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary"> <i class="fa fa-user" aria-hidden="true"></i> Mon Profile  </h6>
+                              </div>
+                                    
+                                    <!-- Avatar -->
+                                    <div class="edit-profile-photo">
+                                        <img  [src]="user.img" height=200 style="margin-left:350px;">
+                                        
+                                    </div>
+                
+                                    <!-- Details -->
+                                    <div class="my-profile">
+            
+                                        <table class="table" style="text-align: center;">
+                                           <tbody>
+                                             
+                                             <tr >
+                                               <td style="color: rgb(172, 6, 56);font-weight:bold;">Nom :</td>
+                                               <td>{{user.nom}}</td>
+                                             </tr>
+                                             <tr >
+                                                <td style="color: rgb(172, 6, 56);font-weight:bold;">Prenom :</td>
+                                                <td>{{user.prenom}}</td>
+                                              </tr>
+                                              <tr >
+                                                <td style="color: rgb(172, 6, 56);font-weight:bold;">Email :</td>
+                                                <td>{{user.email}}</td>
+                                              </tr>
+                                           
+                                           </tbody>
+                                         </table>
+            
+                                       
+                                    </div>
+                                    <button class="btn btn-sm btn-primary mt-3"  [routerLink]="['/modifierAdmin',user.id]">Modifier</button>
+            
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            <app-footer></app-footer>
+        </div>
+       
+    </div>
+
+

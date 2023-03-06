@@ -1,0 +1,98 @@
+<div id="wrapper">
+    <app-sidebar></app-sidebar>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-header>
+
+            </app-header>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Ajouter Admintrateurs</h1>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary"><i class="fa fa-user-plus" aria-hidden="true"></i>  Ajouter Admistrateurs</h6>
+                    </div>
+
+                    <div class="card-body">
+                        <form [formGroup]="addForm" (ngsubmit)="registerAdmin()">
+                            <div class="form-group">
+                                <label for="name" id="name">Photo: </label>
+                                <input type="file" class="form-control"  accept="image/*" (change)="onSelectFile($event)"  formControlName="img"/>
+                                <img [src]="imgURL" height="200" *ngif="imgURL">
+                            </div>
+                            <div *ngIf="img?.touched && img?.invalid">
+                                <small class="text-danger" *ngIf="img?.errors?.['required']">Photo 
+                                    est obligatoire</small>
+                                  
+                              </div>
+                            <div class="form-group">
+                                <label for="name" id="name">Nom: </label>
+                                <input type="text" class="form-control" formControlName="nom">
+                            </div>
+                            <div *ngIf="nom?.touched && nom?.invalid">
+                                <small class="text-danger" *ngIf="nom?.errors?.['required']">nom 
+                                    est obligatoire</small>
+                                  
+                              </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="description" id="desc">Prenom: </label>
+                                    <input type="text" class="form-control" formControlName="prenom">
+                                </div>
+                                <div *ngIf="prenom?.touched && prenom?.invalid">
+                                    <small class="text-danger" *ngIf="prenom?.errors?.['required']">prenom 
+                                        est obligatoire</small>
+                                      
+                                  </div>
+                                <div class="form-group">
+                                    <label for="price" id="price">E-mail: </label>
+                                    <input type="text" class="form-control" formControlName="email">
+                                    <!--input type="number" class="form-control"-->
+                                </div>
+                                <div *ngIf="email?.touched && email?.invalid">
+                                    <small class="text-danger" *ngIf="email?.errors?.['required']">Adresse Email 
+                                        est obligatoire</small>
+                                    <small class="text-danger" *ngIf="email?.errors?.['email']">Respecter le format de l'adresse Email 
+                                        </small>
+                                      
+                                  </div>
+                                <div class="form-group">
+                                    <label for="photo" id="name">Mot De Passe: </label>
+                                    <input type="password" id="exampleInputPassword" class="form-control" formControlName="mdp">
+                                    <!--input type="file" class="form-control-file"-->
+                                </div>
+                                <div *ngIf="mdp?.touched && mdp?.invalid">
+                                    <small class="text-danger" *ngIf="mdp?.errors?.['required']">Mot de passe 
+                                        est obligatoire</small>
+                                      
+                                  </div>
+                                <button type="submit" (click)="registerAdmin()"  class="btn btn-sm btn-primary mt-3">Ajouter</button>
+                                <button type="submit" routerLink="/administrateur"  class="btn btn-sm btn-primary mt-3" style="background-color: rgb(253, 75, 75);margin-left: 20px;border: none;">Annuler</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <app-footer></app-footer>
+        <!-- End of Footer -->
+
+    </div>
+</div>

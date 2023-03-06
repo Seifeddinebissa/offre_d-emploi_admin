@@ -1,0 +1,76 @@
+<div id="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <app-header></app-header>
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <h1 class="h3 mb-0 text-gray-800">Administrateurs</h1>
+                </div>
+                <div>
+                  
+                  <a  routerLink="/ajouterAdmin" class="btn btn-sm btn-primary mb-2"><i class="fa fa-user-plus" aria-hidden="true"></i>  Ajouter
+                    Admin</a> 
+                </div>
+      
+              </div>
+            <div class="col ml-2">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary"> <i class="fa fa-list" aria-hidden="true"></i>    Liste des Administrateurs </h6>
+                  </div>
+      
+                  <div class="card-body">
+                   <div *ngIf="nbrAdmin==0;else show">
+                      <h2 class="text-center">Votre Table Est Vide!</h2>
+
+                   </div>
+                   <ng-template #show> 
+                    <div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>Photo</th>
+                          <th>Nom</th>
+                          <th>Prenom</th>
+                          <th>Email</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let admin of liste | paginate:{itemsPerPage:4,currentPage:page,totalItems:nbrAdmin}">
+                          <td>{{admin.id}}</td>
+                          <td><img [src]="admin.img" height="50"></td>
+                          <td>{{admin.nom}}</td>
+                          <td>{{admin.prenom}}</td>
+                          <td>{{admin.email}}</td>
+                          <td>
+                            <a [routerLink]="['/modifierAdmin',admin.id]" class="btn btn-sm btn-warning">
+                              <i class="fas fa-edit"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger" (click)="supprimerAdmin(admin)">
+                              <i class="fas fa-trash-alt"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      
+                      </tbody>
+                    </table>
+                    </div>
+                    <pagination-controls  (pageChange)="page=$event" class="my_pagination" ></pagination-controls>
+                  </ng-template>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+
+</div>
